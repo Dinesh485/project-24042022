@@ -1,0 +1,12 @@
+{
+  "name": "project-24042022",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "buildCss": "npx tailwindcss -i ./src/tailwind.css -o ./dist/index.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.0.24"
+  }
+}

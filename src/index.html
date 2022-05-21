@@ -1,572 +1,690 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/dist/index.css">
     <title>Menu</title>
 </head>
+
 <body>
-    <nav  class="  w-full bg-[#111111] ">
-        <div class="">
-            <div class="flex justify-center  p-5 lg:p-10">
-                <img class="w-[200px] xl:w-[300px]" src="/assets/HockeyShop.svg" alt="">
+    <nav class="  w-full bg-[#111111] ">
+        <div class=" flex justify-between lg:block ">
+            <div
+                class="flex justify-between items-center gap-2 flex-grow p-3 pr-0 lg:pr-5 2xl:p-8 text-white lg:grid lg:grid-cols-3 lg:justify-items-center">
+                <img class="w-[90px] lg:w-[200px] xl:w-[250px] lg:order-2" src="/assets/HockeyShop.svg" alt="">
+
+
+
+                <div
+                    class=" flex  w-fit items-center lg:order-1  group transition-colors duration-150 hover:text-black hover:bg-white relative ml-auto lg:ml-0 lg:bg-white lg:text-black">
+                    <input type="text" name="search" id="search"
+                        class="bg-transparent w-[120px] absolute py-1.5 px-2 right-full transform transition-transform duration-150 origin-right scale-x-0 group-hover:scale-x-100 bg-white outline-none lg:static lg:scale-x-100 lg:w-fit "
+                        placeholder="search">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6 stroke-current block py-1.5 px-2 box-content " fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
+                <div class="order-3 font-['Pathway_Gothic_One'] text-xl 2xl:text-2xl font-medium flex items-center">
+                    <a href="#" class="hidden lg:block">Login</a>
+                    <hr class='hidden lg:block h-5 border-[1px] border-solid mx-5 border-gray-500/50'>
+                    <a href="#" class="hidden lg:block">Vault</a>
+                    <hr class='hidden lg:block h-5 border-[1px] border-solid mx-5 border-gray-500/50'>
+                    <a href="#" class="flex gap-2 items-center p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-current" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        <span class="hidden lg:block ">Cart</span>
+                    </a>
+
+                </div>
+
             </div>
-            <button class="menu_btn  fixed bottom-5 right-5 text-sm  btn text-white bg-blue-700 rounded-md flex items-center gap-1 px-2 py-1 font-medium lg:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                  </svg>
-                  <span>MENU</span>
+
+
+            <button class='hidden text-white px-2 py-1 lg:hidden' id='close_all_opened'>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
             </button>
-           
-            <div class="menu item  overflow-y-scroll lg:overflow-visible overflow-x-hidden  top-0 left-0 flex flex-col lg:bg-[#1d1d1d] ">
-                <div class = ' p-3 px-5 flex justify-between lg:hidden'>
-                    <button class="flex items-center gap-2 " id = 'back_btn'>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <button
+                class="menu_btn   text-sm  btn text-white rounded-md flex items-center gap-1 px-2 py-1 font-medium lg:hidden ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+
+            <div
+                class="menu item  overflow-y-scroll lg:overflow-visible overflow-x-hidden  flex flex-col lg:bg-[#1d1d1d] ">
+                <div class=' p-3 px-5 flex justify-between lg:hidden'>
+                    <button class="flex items-center gap-2 hidden" id='back_btn'>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
-                          </svg>
+                        </svg>
                         Back
                     </button>
-                    <button class = '' id = 'close_all_opened'>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                          </svg>
-                    </button>
+
                 </div>
-                <div class="relative  p-5 lg:static  flex-grow lg:flex  lg:p-0 lg:justify-center lg:items-center lg:w-full ">
+                <div
+                    class="relative  p-5 lg:static  flex-grow lg:flex  lg:p-0 lg:justify-center lg:items-center lg:w-full ">
                     <div class="drop_down ">
-                         <button class="btn">
-                             <span>Name</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <button class="btn">
+                            <span>Name</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                              </svg>
-                         </button>
-                          <div class = 'item '>
-                             <div>
+                            </svg>
+                        </button>
+                        <div class='item '>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                 </div>
-                             </div>
-                             <div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                </div>
+                            </div>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                 </div>
-                             </div>
-                             <div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                </div>
+                            </div>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                    
-                                 </div>
-                             </div>
-                             <div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+
+                                </div>
+                            </div>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                    
-                                    
-                                 </div>
-                             </div>
-                             <div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+
+
+                                </div>
+                            </div>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                 </div>
-                             </div>
-                          </div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="drop_down ">
-                         <button class="btn">
-                             <span>Name</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <button class="btn">
+                            <span>Name</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                              </svg>
-                         </button>
-                          <div class = 'item '>
-                             <div>
+                            </svg>
+                        </button>
+                        <div class='item '>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                 </div>
-                             </div>
-                             <div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                </div>
+                            </div>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                 </div>
-                             </div>
-                             <div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                </div>
+                            </div>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                    
-                                 </div>
-                             </div>
-                             <div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+
+                                </div>
+                            </div>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                    
-                                    
-                                 </div>
-                             </div>
-                             <div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+
+
+                                </div>
+                            </div>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                 </div>
-                             </div>
-                          </div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="drop_down ">
-                         <button class="btn">
-                             <span>Name</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <button class="btn">
+                            <span>Name</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                              </svg>
-                         </button>
-                          <div class = 'item '>
-                             <div>
+                            </svg>
+                        </button>
+                        <div class='item '>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                 </div>
-                             </div>
-                             <div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                </div>
+                            </div>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                 </div>
-                             </div>
-                             <div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                </div>
+                            </div>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                    
-                                 </div>
-                             </div>
-                             <div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+
+                                </div>
+                            </div>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                    
-                                    
-                                 </div>
-                             </div>
-                             <div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+
+
+                                </div>
+                            </div>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                 </div>
-                             </div>
-                          </div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="drop_down ">
-                         <button class="btn">
-                             <span>Name</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <button class="btn">
+                            <span>Name</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                              </svg>
-                         </button>
-                          <div class = 'item '>
-                             <div>
+                            </svg>
+                        </button>
+                        <div class='item '>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                 </div>
-                             </div>
-                             <div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                </div>
+                            </div>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                 </div>
-                             </div>
-                             <div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                </div>
+                            </div>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                    
-                                 </div>
-                             </div>
-                             <div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+
+                                </div>
+                            </div>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                    
-                                    
-                                 </div>
-                             </div>
-                             <div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+
+
+                                </div>
+                            </div>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                 </div>
-                             </div>
-                          </div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="drop_down ">
-                         <button class="btn">
-                             <span>Name</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <button class="btn">
+                            <span>Name</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                              </svg>
-                         </button>
-                          <div class = 'item '>
-                             <div>
+                            </svg>
+                        </button>
+                        <div class='item '>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                 </div>
-                             </div>
-                             <div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                </div>
+                            </div>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                 </div>
-                             </div>
-                             <div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                </div>
+                            </div>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                    
-                                 </div>
-                             </div>
-                             <div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+
+                                </div>
+                            </div>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                    
-                                    
-                                 </div>
-                             </div>
-                             <div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+
+
+                                </div>
+                            </div>
+                            <div>
                                 <button class="btn">
                                     <span>Name</span>
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                     </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </button>
-                                 <div class = 'item'>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                     <a>link</a>
-                                 </div>
-                             </div>
-                          </div>
+                                <div class='item'>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                    <a>link</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  
-                   
-                    
-                    
+
+                    <div class="absolute bottom-0 left-0 w-full bg-white text-xl font-bold grid grid-cols-2 lg:hidden p-4 font-['Pathway_Gothic_One'] ">
+                         <a href="#" class = 'flex flex-col items-center'>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                              </svg>
+                              Vault
+                         </a>
+                         <a href="#" class = 'flex flex-col items-center'>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                              </svg>
+                              My Account
+                         </a>
+                    </div>
+
+
                 </div>
             </div>
         </div>
     </nav>
     <script>
-          const btn = document.querySelectorAll('.btn')
-          const backBtn = document.querySelector('#back_btn')
-          const closeAll = document.querySelector('#close_all_opened')
+        const btn = document.querySelectorAll('.btn')
+        const backBtn = document.querySelector('#back_btn')
+        const closeAll = document.querySelector('#close_all_opened')
+        const menuBtn = document.querySelector('.menu_btn')
+        const changeMenuIcon = (isOpen) => {
+            if (window.innerWidth <= 1023) {
+                if (isOpen) {
+                    closeAll.style.display = 'block'
+                    menuBtn.style.display = 'none'
+                } else {
+                    closeAll.style.display = 'none'
+                    menuBtn.style.display = 'block'
+                }
+            }
+        }
+        btn.forEach(ele => {
+            ele.addEventListener('click', () => {
+                ele.nextElementSibling.classList.add('opened')
+                const opened = document.querySelectorAll('.opened')
+                changeMenuIcon(true)
+                if (opened.length <= 1 && window.length <= 1023) {
+                    backBtn.classList.add('hidden')
+                } else {
+                    backBtn.classList.remove('hidden')
+                }
+            })
+        })
 
-           btn.forEach(ele =>{
-               ele.addEventListener('click', () =>{
-                   ele.nextElementSibling.classList.add('opened')
-               })
-           })
+        backBtn.addEventListener('click', () => {
+            const opened = document.querySelectorAll('.opened')
+            opened[opened.length - 1].classList.remove('opened')
+            if (opened.length <= 1) {
+                changeMenuIcon(false)
+            }
 
-          backBtn.addEventListener('click', () =>{
-           const opened = document.querySelectorAll('.opened')
-            opened[opened.length-1].classList.remove('opened')
-          })
-          
-          closeAll.addEventListener('click', () =>{
+
+        })
+
+        closeAll.addEventListener('click', () => {
             const opened = document.querySelectorAll('.opened')
             opened.forEach(ele => ele.classList.remove('opened'))
-          })
+            changeMenuIcon(false)
+        })
+
+
+        const r = document.querySelector(':root')
+        const nav = document.querySelector('nav')
+        const menuHeight = window.innerHeight - nav.scrollHeight
+        r.style.setProperty('--menu-height', menuHeight + 'px');
+        r.style.setProperty('--nav-height', nav.scrollHeight + 'px');
+
 
     </script>
 </body>
+
 </html>
